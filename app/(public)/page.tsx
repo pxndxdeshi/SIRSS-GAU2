@@ -37,11 +37,11 @@ export default function CleanCityLanding() {
               <Link href="/announcements" className="text-slate-600 hover:text-[#86efac] transition-colors font-medium">Comunicados</Link>
             </div>
 
-            <div className="flex gap-4">
-              <Link href="/login" className="hidden md:block px-5 py-2.5 rounded-full text-slate-700 font-medium hover:bg-[#dbeafe] transition-all text-center">
-                Iniciar Sesión
+            <div className="flex gap-2 sm:gap-4 items-center">
+              <Link href="/login" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-slate-700 font-medium hover:bg-[#dbeafe] transition-all text-center text-sm sm:text-base">
+                Ingresar
               </Link>
-              <Link href="/register" className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center">
+              <Link href="/register" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
                 Registrarse
               </Link>
             </div>
