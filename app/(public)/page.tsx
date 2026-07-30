@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import {
   Map,
   Trash2,
@@ -18,6 +19,8 @@ import {
 import MobileBottomNav from '@/components/ui/MobileBottomNav'
 
 export default function CleanCityLanding() {
+  const { data: session, status } = useSession();
+
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans selection:bg-[#bbf7d0]">
       {/* Navbar */}
@@ -38,12 +41,20 @@ export default function CleanCityLanding() {
             </div>
 
             <div className="flex gap-2 sm:gap-4 items-center">
-              <Link href="/login" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-slate-700 font-medium hover:bg-[#dbeafe] transition-all text-center text-sm sm:text-base">
-                Ingresar
-              </Link>
-              <Link href="/register" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
-                Registrarse
-              </Link>
+              {status === 'authenticated' ? (
+                <Link href="/dashboard" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
+                  Ir al Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link href="/login" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-slate-700 font-medium hover:bg-[#dbeafe] transition-all text-center text-sm sm:text-base">
+                    Ingresar
+                  </Link>
+                  <Link href="/register" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
+                    Registrarse
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
