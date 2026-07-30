@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import {
   Map,
   Trash2,
@@ -42,9 +42,17 @@ export default function CleanCityLanding() {
 
             <div className="flex gap-2 sm:gap-4 items-center">
               {status === 'authenticated' ? (
-                <Link href="/dashboard" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
-                  Ir al Dashboard
-                </Link>
+                <>
+                  <Link href="/dashboard" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#86efac] to-[#7dd3fc] text-slate-900 font-medium hover:scale-105 transition-all shadow-sm text-center text-sm sm:text-base">
+                    Ir al Dashboard
+                  </Link>
+                  <button
+                    onClick={() => signOut({ callbackUrl: '/' })}
+                    className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-rose-600 font-medium hover:bg-rose-50 transition-all text-center text-sm sm:text-base border border-rose-200"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </>
               ) : (
                 <>
                   <Link href="/login" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-slate-700 font-medium hover:bg-[#dbeafe] transition-all text-center text-sm sm:text-base">
