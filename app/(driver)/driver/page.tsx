@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import { DriverDashboardClient } from '@/features/schedules/components/driver-dashboard-client'
 
+import { LogoutButton } from '@/features/auth/components/logout-button'
+
 export const dynamic = 'force-dynamic'
 
 export default async function DriverDashboardPage() {
@@ -71,9 +73,12 @@ export default async function DriverDashboardPage() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Portal del Conductor</h1>
           <p className="text-slate-400 text-sm mt-1">Gestión de ruta diaria y reportes operativos</p>
         </div>
-        <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-          GPS Activo y Compartiendo
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+            GPS Activo y Compartiendo
+          </div>
+          <LogoutButton />
         </div>
       </header>
       <main className="p-8 max-w-7xl mx-auto">

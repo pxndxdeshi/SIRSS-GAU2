@@ -4,7 +4,9 @@ import { AdminDashboardScreen } from "@/features/dashboard/screens/admin-dashboa
 import { CitizenDashboardScreen } from "@/features/dashboard/screens/citizen-dashboard-screen";
 import { DriverDashboardScreen } from "@/features/dashboard/screens/driver-dashboard-screen";
 import { AdminLayout } from "@/features/dashboard/layouts/admin-layout";
+import { CitizenLayout } from "@/features/dashboard/layouts/citizen-layout";
 import { redirect } from "next/navigation";
+import { getAnnouncements } from "@/features/announcements/services/announcement.service";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -16,7 +18,6 @@ export default async function DashboardPage() {
   const role = session.user?.role?.toUpperCase();
 
   if (role === "ADMIN") {
-    const { getAnnouncements } = await import("@/features/announcements/services/announcement.service");
     const announcements = await getAnnouncements();
     return (
       <AdminLayout>
@@ -28,5 +29,9 @@ export default async function DashboardPage() {
     redirect("/driver");
   }
   
-  return <CitizenDashboardScreen />;
+  return (
+    <CitizenLayout>
+      <CitizenDashboardScreen />
+    </CitizenLayout>
+  );
 }

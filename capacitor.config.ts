@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'SGAU Wanchaq',
   webDir: 'public',
   server: {
-    url: 'http://10.168.110.80:3000',
+    url: 'https://sirss-gau-2.vercel.app',
     cleartext: true
   }
 };
