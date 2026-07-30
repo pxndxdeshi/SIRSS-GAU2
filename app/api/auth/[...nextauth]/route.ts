@@ -85,7 +85,7 @@ const options: NextAuthOptions = {
     error: '/login',
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "una-contrasena-muy-secreta-12345",
 
   debug: process.env.NODE_ENV === 'development',
 }
